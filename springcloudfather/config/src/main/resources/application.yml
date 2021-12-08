@@ -8,11 +8,6 @@ spring:
   cloud:
     config:
       server:
-        svn:
-          uri: https://192.168.3.97/svn/SourceCode/SMPH/Beats/trunk/test/config
-          #username: *****
-          #password: *****
-          default-label:
         git:
           # 仓库地址
           uri: https://github.com/intomylife/SpringCloud
