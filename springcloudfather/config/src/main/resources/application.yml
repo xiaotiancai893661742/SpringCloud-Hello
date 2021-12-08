@@ -1,0 +1,36 @@
+server:
+  port: 7000
+spring:
+  application:
+    name: config-eureka-server
+  profiles:
+    active: subversion
+  cloud:
+    config:
+      server:
+        svn:
+          uri: https://192.168.3.97/svn/SourceCode/SMPH/Beats/trunk/test/config
+          #username: *****
+          #password: *****
+          default-label:
+        git:
+          # 仓库地址
+          uri: https://github.com/intomylife/SpringCloud
+          # 对应 {label} 部分，即 Git 的分支
+          label: master
+          # 仓库文件夹名称，多个以逗号分隔
+          search-paths: springcloud-config-eureka/config-repo
+          # git 仓库用户名（公开库可以不用填写）
+          username:
+          # git 仓库密码（公开库可以不用填写）
+          password:
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:5000/eureka/
+  instance:
+    preferIpAddress: true
+    instance-id: ${spring.cloud.client.ipAddress}:${server.port}
+    lease-expiration-duration-in-seconds: 30
+    lease-renewal-interval-in-seconds: 30
