@@ -1,0 +1,8 @@
+spring:
+  application:
+    name: business
+  cloud:
+    config:
+      profile: dev #这个可以通过参数控制版本，也可以写死多个值，用逗号分隔
+      uri: http://127.0.0.1:7000/
+      label: dev

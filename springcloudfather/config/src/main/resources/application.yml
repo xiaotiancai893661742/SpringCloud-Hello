@@ -1,24 +1,26 @@
 server:
   port: 7000
 spring:
-  application:
-    name: config-eureka-server
   profiles:
-    active: subversion
+    active: native
+  application:
+    name: config-server
   cloud:
     config:
       server:
-        git:
-          # 仓库地址
-          uri: https://github.com/intomylife/SpringCloud
-          # 对应 {label} 部分，即 Git 的分支
-          label: master
-          # 仓库文件夹名称，多个以逗号分隔
-          search-paths: springcloud-config-eureka/config-repo
-          # git 仓库用户名（公开库可以不用填写）
-          username:
-          # git 仓库密码（公开库可以不用填写）
-          password:
+        native:
+          search-locations: classpath:properties/
+#        git:
+#          # 仓库地址
+#          uri: https://github.com/xiaotiancai893661742/SpringCloud-Hello.git
+#          # 对应 {label} 部分，即 Git 的分支
+#          label: master
+#          # 仓库文件夹名称，多个以逗号分隔
+#          search-paths: config/env
+#          # git 仓库用户名（公开库可以不用填写）
+#          username: xiaotiancai893661742
+#          # git 仓库密码（公开库可以不用填写）
+#          password: lyc893661742
 
 eureka:
   client:
@@ -27,5 +29,3 @@ eureka:
   instance:
     preferIpAddress: true
     instance-id: ${spring.cloud.client.ipAddress}:${server.port}
-    lease-expiration-duration-in-seconds: 30
-    lease-renewal-interval-in-seconds: 30
